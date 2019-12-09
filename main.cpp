@@ -238,7 +238,8 @@ void Scanner(int &syn, char sourceCode[], char token[], int &ptrProject)//一定
     } else { //rise ERROR
         printf("error：there is no exist %c \n", ch);
         //  goto end_program;
-        exit(0);
+        syn = -1;//rise error 错误
+        //exit(0);
     }
 }
 
@@ -355,6 +356,9 @@ void demo() {
             printf("(  %s ,   )\n", operatorOrSeg[syn - 33]);
             fprintf(fp1, "(  %s ,   )\n", operatorOrSeg[syn - 33]);
             fprintf(fpout, "(%s   ,   )\n", operatorOrSeg[syn - 33]);
+        } else if (syn == -1) {//receive error
+            fprintf(fpout, "( ERROR , %s )\n", token);
+            printf("( ERROR , %s )\n", token);
         }
     }
 
